@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070f">
+
+  <title>VapersKING | Catálogo</title>
+  <meta name="description" content="VapersKING — catálogo digital com identidade neon e atendimento direto.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #09070f;
+      --surface: #110d1b;
+      --surface2: #191127;
+      --purple: #a855f7;
+      --purple-light: #c084fc;
+      --text: #faf7ff;
+      --muted: #a69bb7;
+      --border: rgba(192,132,252,.16);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, 91%);
+      margin: auto;
+    }
+
+    header {
+      height: 78px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9,7,15,.94);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--purple-light);
+      text-shadow: 0 0 18px rgba(168,85,247,.7);
+    }
+
+    .nav-link {
+      color: #d5c9e5;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .nav-link:hover {
+      color: var(--purple-light);
+    }
+
+    .nav-button {
+      background: var(--purple);
+      color: white;
+      border-radius: 7px;
+      padding: 11px 16px;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 0 20px rgba(168,85,247,.15);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 85px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse at 75% 30%, rgba(126,34,206,.19), transparent 42%),
+        radial-gradient(ellipse at 15% 80%, rgba(168,85,247,.07), transparent 35%);
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--purple-light);
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--purple-light);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    .hero h1 {
+      margin: 24px 0 19px;
+      font-size: clamp(43px, 7vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      color: var(--purple-light);
+      text-shadow: 0 0 35px rgba(168,85,247,.25);
+    }
+
+    .hero p {
+      max-width: 550px;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 29px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 19px;
+      border: 1px solid var(--purple);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .button-primary {
+      background: var(--purple);
+      color: white;
+      box-shadow: 0 0 22px rgba(168,85,247,.17);
+    }
+
+    .button-primary:hover {
+      background: #9333ea;
+      box-shadow: 0 0 28px rgba(168,85,247,.35);
+      transform: translateY(-2px);
+    }
+
+    .catalog {
+      padding: 75px 0 90px;
+    }
+
+    .catalog-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .catalog-heading h2 {
+      font-size: clamp(27px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-top: 12px;
+    }
+
+    .catalog-heading p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .search {
+      width: 270px;
+      max-width: 100%;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(168,85,247,.08);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--surface);
+      transition: transform .2s, border-color .2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      border-color: rgba(192,132,252,.55);
+    }
+
+    .product-image {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at center, rgba(168,85,247,.17), transparent 65%),
+        #151020;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .product-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-placeholder {
+      font-size: 45px;
+      font-weight: 900;
+      color: var(--purple-light);
+      text-shadow: 0 0 30px rgba(168,85,247,.65);
+    }
+
+    .product-info {
+      padding: 17px;
+    }
+
+    .product-label {
+      color: var(--purple-light);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin: 8px 0;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: 12px;
+      min-height: 38px;
+    }
+
+    .product-footer {
+      margin-top: 17px;
+      padding-top: 13px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .product-action {
+      border: 1px solid var(--border);
+      background: rgba(168,85,247,.1);
+      color: var(--purple-light);
+      border-radius: 5px;
+      padding: 8px 10px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .empty {
+      display: none;
+      color: var(--muted);
+      text-align: center;
+      padding: 35px 0;
+      grid-column: 1 / -1;
+    }
+
+    .contact {
+      border-top: 1px solid var(--border);
+      padding: 70px 0;
+      background: #0d0915;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(29px, 5vw, 43px);
+      margin: 15px 0;
+      letter-spacing: -1.3px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .product-image {
+        height: 190px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 68px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .catalog {
+        padding: 55px 0 65px;
+      }
+
+      .catalog-heading {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .product-grid {
+        gap: 11px;
+      }
+
+      .product-image {
+        height: 145px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .product-info h3 {
+        font-size: 13px;
+      }
+
+      .product-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .product-action {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio">Vapers<span>KING</span></a>
+
+      <nav style="display:flex;align-items:center;gap:22px">
+        <a class="nav-link" href="#catalogo">Catálogo</a>
+        <a class="nav-button" href="#contato">Contato ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <span class="eyebrow">VapersKING • Identidade digital</span>
+
+        <h1>
+          Estilo que chama atenção.
+          <span>Design que marca.</span>
+        </h1>
+
+        <p>
+          Uma experiência digital moderna, com visual exclusivo,
+          navegação simples e uma apresentação pensada nos detalhes.
+        </p>
+
+        <a href="#catalogo" class="button button-primary">
+          Explorar vitrine ↓
+        </a>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+      <div class="container">
+        <div class="catalog-heading">
+          <div>
+            <span class="eyebrow">Vitrine</span>
+            <h2>Conheça nossos produtos.</h2>
+            <p>Consulte as informações dos produtos permitidos disponíveis.</p>
+          </div>
+
+          <input
+            type="search"
+            id="search"
+            class="search"
+            placeholder="Buscar produto..."
+            aria-label="Buscar produto"
+          >
+        </div>
+
+        <div class="product-grid" id="product-grid">
+
+          <!-- MODELO DE CARD: duplique para adicionar itens -->
+          <article class="product" data-name="Produto exemplo 01">
+            <div class="product-image">
+              <!-- Troque o espaço abaixo por uma foto real:
+              <img src="imagens/produto-01.jpg" alt="Produto exemplo 01">
+              -->
+              <span class="image-placeholder">VK.</span>
+            </div>
+
+            <div class="product-info">
+              <span class="product-label">Produto</span>
+              <h3>Produto exemplo 01</h3>
+              <p>Adicione aqui uma descrição breve do produto.</p>
+
+              <div class="product-footer">
+                <span class="product-price">R$ 00,00</span>
+                <button class="product-action" type="button">
+                  Ver detalhes ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-name="Produto exemplo 02">
+            <div class="product-image">
+              <span class="image-placeholder">VK.</span>
+            </div>
+
+            <div class="product-info">
+              <span class="product-label">Produto</span>
+              <h3>Produto exemplo 02</h3>
+              <p>Adicione aqui uma descrição breve do produto.</p>
+
+              <div class="product-footer">
+                <span class="product-price">R$ 00,00</span>
+                <button class="product-action" type="button">
+                  Ver detalhes ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-name="Produto exemplo 03">
+            <div class="product-image">
+              <span class="image-placeholder">VK.</span>
+            </div>
+
+            <div class="product-info">
+              <span class="product-label">Produto</span>
+              <h3>Produto exemplo 03</h3>
+              <p>Adicione aqui uma descrição breve do produto.</p>
+
+              <div class="product-footer">
+                <span class="product-price">R$ 00,00</span>
+                <button class="product-action" type="button">
+                  Ver detalhes ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-name="Produto exemplo 04">
+            <div class="product-image">
+              <span class="image-placeholder">VK.</span>
+            </div>
+
+            <div class="product-info">
+              <span class="product-label">Produto</span>
+              <h3>Produto exemplo 04</h3>
+              <p>Adicione aqui uma descrição breve do produto.</p>
+
+              <div class="product-footer">
+                <span class="product-price">R$ 00,00</span>
+                <button class="product-action" type="button">
+                  Ver detalhes ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <p class="empty" id="empty">Nenhum produto encontrado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container">
+        <span class="eyebrow">Atendimento</span>
+        <h2>Precisa de informações?</h2>
+        <p>
+          Entre em contato para esclarecer dúvidas sobre a loja
+          e os produtos permitidos.
+        </p>
+        <a class="button button-primary" href="mailto:contato@exemplo.com">
+          Fale conosco ↗
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#inicio">Vapers<span>KING</span></a>
+      <p>© <span id="year"></span> VapersKING. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const products = [...document.querySelectorAll(".product")];
+    const empty = document.getElementById("empty");
+
+    search.addEventListener("input", () => {
+      const query = search.value.toLowerCase().trim();
+      let count = 0;
+
+      products.forEach(product => {
+        const matches = product.dataset.name.toLowerCase().includes(query);
+        product.style.display = matches ? "" : "none";
+        if (matches) count++;
+      });
+
+      empty.style.display = count ? "none" : "block";
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.querySelectorAll(".product-action").forEach(button => {
+      button.addEventListener("click", () => {
+        const product = button.closest(".product");
+        alert("Consulte as informações deste item com a loja.");
+      });
+    });
+  </script>
+</body>
+</html>
